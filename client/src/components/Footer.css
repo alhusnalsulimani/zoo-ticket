@@ -1,0 +1,23 @@
+.footer {
+  position: fixed; /* Fixes it to the screen */
+  bottom: 0;       /* Positions it at the very bottom */
+  left: 0;
+  right: 0;
+  height: auto;
+  min-height: 60px; 
+  padding: 10px 20px;
+  
+  display: flex;
+  flex-direction: column; /* This stacks the <p> tags vertically */
+  justify-content: center;
+  align-items: center;
+
+  background:rgba(59, 82, 38, 0.6);
+  color: white;
+  z-index: 1000; /* Keeps it above the background video */
+}
+
+.footer p {
+  margin: 2px 0;      /* Reduces space between the two lines */
+  font-size: 0.9rem;  /* Optional: makes text look cleaner */
+}

@@ -1,0 +1,85 @@
+/* Forms.css */
+
+.auth-card {
+  position: relative;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  /* Thicker brown bar for the pixel animal to walk on */
+  border-top: 15px solid #673720; 
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 420px;
+  margin-top: 50px;
+}
+
+/* Container for the pixel animal */
+.pixel-animal {
+  position: absolute;
+  height: 65px; /* Adjust size */
+  width: auto;
+  
+  /* remove the background from the image, 
+     this line helps blend it into the brown bar */
+  mix-blend-mode: multiply; 
+
+  bottom: 0px; /* Aligns its feet to the bottom of the path */
+  image-rendering: pixelated; 
+  animation: zooWalk 12s linear infinite;
+}
+
+.animal-path {
+  width: 100%;
+  height: 60px;
+  position: absolute;
+  top: -68px; /* Adjust this so feet touch the brown bar exactly */
+  left: 0;
+  overflow: hidden;
+  background: transparent; /* Ensure the path itself is clear */
+}
+
+
+@keyframes zooWalk {
+  0% { left: -10%; transform: scaleX(1); }
+  45% { transform: scaleX(1); }
+  50% { left: 100%; transform: scaleX(-1); } /* Flips to walk back */
+  95% { transform: scaleX(-1); }
+  100% { left: -10%; transform: scaleX(1); }
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column; /* Labels UP */
+  align-items: flex-start;
+}
+
+.form-group label {
+  font-weight: 800;
+  color: #673720;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.auth-card input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #B49481;
+  border-radius: 10px;
+  transition: border-color 0.3s;
+}
+
+.auth-card input:focus {
+  border-color: #673720;
+  outline: none;
+}
+
+
+.h2-topic{
+  color: #673720;
+}
+
+.btn-col, .btn-col:hover, .btn-col:active {
+  background-color: #B49481 !important;
+  border-color: #B49481 !important;
+}

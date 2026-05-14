@@ -1,0 +1,446 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+/* This handles the spacing */
+.main-content {
+  padding-top: 70px;    /* Header height */
+  padding-bottom: 60px; /* Footer height */
+}
+
+/* This handles the full-screen centering */
+.content-wrapper {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  
+  /* Full screen minus header and footer */
+  min-height: calc(100vh - 70px - 60px); 
+  width: 100%; 
+   /* ADD THIS: Padding creates space inside the wrapper */
+  padding-top: 40px;    /* Space below header */
+  padding-bottom: 40px; /* Space above footer */
+  
+  width: 100%;
+  box-sizing: border-box; /* Ensures padding doesn't break the height calc */
+}
+
+/* Ensure the card looks clean */
+.auth-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 450px;
+  z-index: 1; /* Keeps it under the header if you scroll */
+}
+
+
+/* ─── PAGE WRAPPER ───────────────────────────────────────── */
+.admin-bookings-wrapper {
+  font-family: 'DM Sans', sans-serif;
+  background: #f4f6f0;
+  min-height: 100vh;
+  padding: 2.5rem 2rem;
+  color: #1a1d2e;
+}
+
+.admin-bookings-wrapper h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #1a1d2e;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* ─── STAT CARDS ─────────────────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.stat-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid #d6dbc8;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 16px 16px 0 0;
+}
+
+/* Card accent colours — zoo palette */
+.stat-card.revenue::before   { background: linear-gradient(90deg, #639922, #3B6D11); }
+.stat-card.confirmed::before { background: linear-gradient(90deg, #97C459, #639922); }
+.stat-card.cancelled::before { background: linear-gradient(90deg, #ff1a1a, #cc0000); }
+.stat-card.guests::before    { background: linear-gradient(90deg, #1D9E75, #0F6E56); }
+
+.stat-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #8a9070;
+  margin-bottom: 0.6rem;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.stat-card.revenue   .stat-value { color: #3B6D11; }
+.stat-card.confirmed .stat-value { color: #639922; }
+.stat-card.cancelled .stat-value { color: #cc0000; }
+.stat-card.guests    .stat-value { color: #0F6E56; }
+
+/* ─── TABLE CARD ─────────────────────────────────────────── */
+.table-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid #d6dbc8;
+  overflow: hidden;
+}
+
+.table-header-bar {
+  padding: 1.25rem 1.75rem;
+  border-bottom: 1px solid #e8ecd8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.table-header-bar span {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1d2e;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+/* ─── TABLE ──────────────────────────────────────────────── */
+.bookings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.bookings-table thead tr {
+  background: #f7f9f2;
+}
+
+.bookings-table th {
+  padding: 0.9rem 1.25rem;
+  text-align: left;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #8a9070;
+  border-bottom: 1px solid #e8ecd8;
+  white-space: nowrap;
+}
+
+.bookings-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #f0f3e8;
+  color: #2d3148;
+  vertical-align: middle;
+}
+
+.bookings-table tbody tr {
+  transition: background 0.15s;
+}
+
+.bookings-table tbody tr:hover {
+  background: #f7f9f2;
+}
+
+.bookings-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ─── CELL HELPERS ───────────────────────────────────────── */
+.customer-name {
+  font-weight: 600;
+  color: #1a1d2e;
+}
+
+.contact-email {
+  color: #4b5563;
+  font-size: 0.82rem;
+}
+
+.contact-phone {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  color: #8a9070;
+  margin-top: 2px;
+}
+
+.ticket-name {
+  font-weight: 500;
+}
+
+.ticket-na {
+  color: #BA7517;
+  font-weight: 600;
+  font-size: 0.78rem;
+}
+
+.date-cell {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.82rem;
+  color: #4b5563;
+  white-space: nowrap;
+}
+
+.guests-cell {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.82rem;
+  color: #4b5563;
+}
+
+.total-cell {
+  font-weight: 600;
+  color: #1a1d2e;
+  white-space: nowrap;
+}
+
+/* ─── STATUS BADGES ──────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Confirmed — vivid solid green */
+.badge-confirmed {
+  background: #639922;
+  color: #ffffff;
+}
+.badge-confirmed::before { background: #ffffff; }
+
+/* Finished — vivid solid amber */
+.badge-finished {
+  background: #F5C800;
+  color: #ffffff;
+}
+.badge-finished::before { background: #ffffff; }
+
+/* Cancelled — vivid solid red, no blur */
+.badge-cancelled {
+  background: #ff1a1a;
+  color: #ffffff;
+}
+.badge-cancelled::before { background: #ffffff; }
+
+.badge-na {
+  color: #BA7517;
+  font-weight: 600;
+  font-size: 0.78rem;
+}
+
+/* ─── DELETE BUTTON ──────────────────────────────────────── */
+.btn-delete {
+  background: transparent;
+  border: 1.5px solid #D85A30;
+  color: #D85A30;
+  border-radius: 8px;
+  padding: 5px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.btn-delete:hover {
+  background: #D85A30;
+  color: #ffffff;
+}
+
+/* ─── LOADING STATE ──────────────────────────────────────── */
+.loading-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  color: #8a9070;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-bookings-wrapper {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* Profile.css */
+
+.profile-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.passport-card {
+  background: #fff;
+  border: 0.5px solid #e0e0e0;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 480px;
+  overflow: hidden;
+  font-family: inherit;
+}
+
+/* Header */
+.passport-header {
+  background: #3b6d11;
+  padding: 1.5rem 2rem 1rem;
+  position: relative;
+}
+
+.passport-stamp {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 56px;
+  height: 56px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-12deg);
+}
+
+.passport-stamp span {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.passport-subtitle {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 4px;
+}
+
+.passport-title {
+  font-family: "Georgia", serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: #fff;
+  margin: 0;
+}
+
+/* Body */
+.passport-body {
+  padding: 1.5rem 2rem;
+}
+
+.passport-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+}
+
+.passport-row--bordered {
+  border-bottom: 0.5px solid #e8e8e8;
+}
+
+.passport-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #eaf3de;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.passport-label {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #888;
+  margin: 0 0 2px;
+}
+
+.passport-value {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0;
+  font-family: "Courier New", monospace;
+}
+
+/* Footer */
+.passport-footer {
+  background: #f7f7f5;
+  padding: 10px 2rem;
+  border-top: 0.5px solid #e8e8e8;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.passport-footer span {
+  font-size: 12px;
+  color: #888;
+}

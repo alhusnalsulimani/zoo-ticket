@@ -1,0 +1,47 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 70px;
+  padding: 0 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: rgba(59, 82, 38, 0.6);
+  color: white;
+  z-index: 1000;
+}
+
+/* Reactstrap's <Nav> component uses the class 'nav' by default */
+.header .nav { 
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 10px; /* This creates the space between links */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+/* Reactstrap NavLinks have default padding that can mess with alignment */
+.header .nav-link {
+  color: white !important;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0 10px; /* Adding a little horizontal padding helps too */
+}
+
+/* Reactstrap's <Navbar> adds extra padding that can push things around */
+.header .navbar {
+  padding: 0;
+}
+
+
+/* Hover effect for better UX */
+.header .nav-link:hover {
+  color: #D44084 !important;
+}

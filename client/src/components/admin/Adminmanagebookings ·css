@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
+/* ─── PAGE WRAPPER ───────────────────────────────────────── */
+.admin-bookings-wrapper {
+  font-family: 'DM Sans', sans-serif;
+  background: #f4f6f0;
+  min-height: 100vh;
+  padding: 2.5rem 2rem;
+  color: #1a1d2e;
+}
+
+.admin-bookings-wrapper h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #1a1d2e;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* ─── STAT CARDS ─────────────────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.stat-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid #d6dbc8;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 16px 16px 0 0;
+}
+
+/* Card accent colours — zoo palette */
+.stat-card.revenue::before   { background: linear-gradient(90deg, #639922, #3B6D11); }
+.stat-card.confirmed::before { background: linear-gradient(90deg, #97C459, #639922); }
+.stat-card.cancelled::before { background: linear-gradient(90deg, #EF9F27, #BA7517); }
+.stat-card.guests::before    { background: linear-gradient(90deg, #1D9E75, #0F6E56); }
+
+.stat-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #8a9070;
+  margin-bottom: 0.6rem;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.stat-card.revenue   .stat-value { color: #3B6D11; }
+.stat-card.confirmed .stat-value { color: #639922; }
+.stat-card.cancelled .stat-value { color: #BA7517; }
+.stat-card.guests    .stat-value { color: #0F6E56; }
+
+/* ─── TABLE CARD ─────────────────────────────────────────── */
+.table-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid #d6dbc8;
+  overflow: hidden;
+}
+
+.table-header-bar {
+  padding: 1.25rem 1.75rem;
+  border-bottom: 1px solid #e8ecd8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.table-header-bar span {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1d2e;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+/* ─── TABLE ──────────────────────────────────────────────── */
+.bookings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.bookings-table thead tr {
+  background: #f7f9f2;
+}
+
+.bookings-table th {
+  padding: 0.9rem 1.25rem;
+  text-align: left;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #8a9070;
+  border-bottom: 1px solid #e8ecd8;
+  white-space: nowrap;
+}
+
+.bookings-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #f0f3e8;
+  color: #2d3148;
+  vertical-align: middle;
+}
+
+.bookings-table tbody tr {
+  transition: background 0.15s;
+}
+
+.bookings-table tbody tr:hover {
+  background: #f7f9f2;
+}
+
+.bookings-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ─── CELL HELPERS ───────────────────────────────────────── */
+.customer-name {
+  font-weight: 600;
+  color: #1a1d2e;
+}
+
+.contact-email {
+  color: #4b5563;
+  font-size: 0.82rem;
+}
+
+.contact-phone {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  color: #8a9070;
+  margin-top: 2px;
+}
+
+.ticket-name {
+  font-weight: 500;
+}
+
+.ticket-na {
+  color: #BA7517;
+  font-weight: 600;
+  font-size: 0.78rem;
+}
+
+.date-cell {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.82rem;
+  color: #4b5563;
+  white-space: nowrap;
+}
+
+.guests-cell {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.82rem;
+  color: #4b5563;
+}
+
+.total-cell {
+  font-weight: 600;
+  color: #1a1d2e;
+  white-space: nowrap;
+}
+
+/* ─── STATUS BADGES ──────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Confirmed — forest green */
+.badge-confirmed {
+  background: #EAF3DE;
+  color: #3B6D11;
+}
+.badge-confirmed::before { background: #639922; }
+
+/* Finished — amber/earth */
+.badge-finished {
+  background: #FAEEDA;
+  color: #633806;
+}
+.badge-finished::before { background: #BA7517; }
+
+/* Cancelled — coral/warm orange */
+.badge-cancelled {
+  background: #FAECE7;
+  color: #4A1B0C;
+}
+.badge-cancelled::before { background: #D85A30; }
+
+.badge-na {
+  font-size: 0.72rem;
+  color: #8a9070;
+}
+
+/* ─── DELETE BUTTON ──────────────────────────────────────── */
+.btn-delete {
+  background: transparent;
+  border: 1.5px solid #D85A30;
+  color: #D85A30;
+  border-radius: 8px;
+  padding: 5px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.btn-delete:hover {
+  background: #D85A30;
+  color: #ffffff;
+}
+
+/* ─── LOADING STATE ──────────────────────────────────────── */
+.loading-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  color: #8a9070;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-bookings-wrapper {
+    padding: 1.5rem 1rem;
+  }
+}
