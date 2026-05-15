@@ -25,7 +25,7 @@ function Register() {
 
   const registerCustomer = async () => {
     try {
-      const res = await axios.post("http://localhost:3001/api/user/register", {
+      const res = await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/user/register`, {
         userName,
         email,
         phoneno,
