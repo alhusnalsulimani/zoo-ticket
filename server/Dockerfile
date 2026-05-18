@@ -1,13 +1,18 @@
-FROM node:18-alpine
+FROM node:22-alpine
 
 WORKDIR /app
 
+# Copy package files
 COPY package*.json ./
 
+# Install dependencies
 RUN npm install
 
+# Copy the entire server application
 COPY . .
 
-EXPOSE 5000
+# Expose server port (must match PORT in .env)
+EXPOSE 3001
 
-CMD ["npm", "start"]
+# Run with nodemon for development
+CMD ["npm", "run", "dev"]

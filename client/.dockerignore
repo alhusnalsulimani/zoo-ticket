@@ -1,2 +1,9 @@
 node_modules
-.env
+.git
+.gitignore
+README.md
+.env.local
+dist
+.vite
+npm-debug.log
+yarn-error.log

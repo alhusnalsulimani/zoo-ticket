@@ -1,22 +1,37 @@
 version: "3.8"
 
 services:
-
   client:
     build: ./client
     container_name: zoo-client
     ports:
-      - "3000:3000"
+      - "5173:5173"  # Correct Vite port
     stdin_open: true
+    tty: true
     environment:
       - CHOKIDAR_USEPOLLING=true
+      - VITE_SERVER_URL=http://server:3001  # Internal Docker communication
+      - VITE_LOCATION_API_KEY=https://geo.ipify.org/api/v2/country,city?apiKey=at_2VvvSj5ybnNRspGMtbICevpyLLNIe
     depends_on:
       - server
+    networks:
+      - zoo-network
 
   server:
     build: ./server
     container_name: zoo-server
     ports:
-      - "5001:5000"
+      - "3001:3001"  # Correct server port
     env_file:
       - ./server/.env
+    environment:
+      - NODE_ENV=development
+    networks:
+      - zoo-network
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+
+networks:
+  zoo-network:
+    driver: bridge
